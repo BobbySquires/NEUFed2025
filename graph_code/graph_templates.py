@@ -1,6 +1,7 @@
 """
 Houses the Plotly templates for graphs + coloring options
 """
+
 import plotly.graph_objects as go
 import plotly.io as pio
 
@@ -78,9 +79,7 @@ fed_2025_template = go.layout.Template(
                 family=default_font,
                 size=18,
                 color=default_text_color
-            ),
-            # Default to date ticks
-            type='date'
+            )
         ),
 
         # Defaults for the y-axis styling (ticks)
