@@ -79,7 +79,8 @@ fed_2025_template = go.layout.Template(
                 family=default_font,
                 size=18,
                 color=default_text_color
-            )
+            ),
+            type='date'  # Set x-axis to date by default
         ),
 
         # Defaults for the y-axis styling (ticks)
@@ -128,7 +129,8 @@ fed_2025_template = go.layout.Template(
                 # For line use a default width of 3
                 line = dict(
                     width=3
-                    )
+                    ),
+                hovertemplate = "%{x|%Y-%m-%d}<br> %{y:.1f}<extra></extra>"
             )
         ]
     )
