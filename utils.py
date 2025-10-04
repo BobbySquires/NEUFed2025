@@ -1,12 +1,11 @@
 """
-Standalone utility functions for Plotly figures (graph objects)
+Standalone utility functions, some for Plotly, some for other stuff
 """
 
-
-import plotly.graph_objects as go
+import plotly.graph_objects as go 
 import plotly.io as pio
 
-def add_end_labels(fig, offset=0.0, **text_kwargs):
+def add_end_labels(fig:go.Figure, offset:float =0.0, **text_kwargs) -> None:
     """
     Adds end labels and markers to scatter line traces in a Plotly figure.
     Label and marker colors match the line color, including those set by templates.
@@ -17,12 +16,12 @@ def add_end_labels(fig, offset=0.0, **text_kwargs):
         **text_kwargs: passed to go.layout.Annotation
     """
     # Use template from the figure layout or default
-    if fig.layout.template:
-        template = fig.layout.template
+    if fig.layout.template: # type: ignore
+        template = fig.layout.template # type: ignore
     else:
         template = pio.templates[pio.templates.default]
         
-    colorway = template.layout.colorway or pio.templates["plotly"].layout.colorway
+    colorway = template.layout.colorway or pio.templates["plotly"].layout.colorway # type: ignore
 
     color_idx = 0  # To track which color from the colorway to use
 
@@ -74,4 +73,21 @@ def add_end_labels(fig, offset=0.0, **text_kwargs):
             hoverinfo='skip'
         ))
 
+# path_utils.py
+from pathlib import Path
 
+def get_repo_root() -> Path:
+    """
+    Moves up the repo to get the git root path and returns it
+
+    Returns:
+        Path: Absolute path to the root of the Git repo.
+
+    Raises:
+        FileNotFoundError: If the .git directory doesnt exist
+    """
+    current = Path(__file__).resolve()
+    for parent in current.parents:
+        if (parent / ".git").exists():
+            return parent
+    raise FileNotFoundError("Could not find .git directory")
