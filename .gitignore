@@ -1,3 +1,5 @@
 # Ignore virtual environments
 venv/
 .venv/
+
+# Tried to ignore api key but it doesnt work the way I want it to, cause user needs file to start with...
