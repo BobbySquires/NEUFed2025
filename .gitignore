@@ -1,4 +1,5 @@
 # Ignore virtual environments
 venv/
 .venv/
-fred_api_key.txt
+
+# Tried to ignore api key but it doesnt work the way I want it to, cause user needs file to start with...
