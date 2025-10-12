@@ -45,7 +45,7 @@ def add_end_labels(fig:go.Figure, offset:float =0.0, **text_kwargs) -> None:
             color_idx += 1
 
         # Add text label
-        label = f"{y_end:.2f}"
+        label = f"{y_end:.1f}"
         fig.add_annotation(
             x=x_end,
             y=y_end + offset * y_range,
